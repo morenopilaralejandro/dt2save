@@ -40,6 +40,6 @@ Restore the specified backup file to Android.
 <br>
 Restore the specified backup file to PC.
 
--h: help.
+-h
 <br>
 Display help and exit.
