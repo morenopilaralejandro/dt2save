@@ -17,28 +17,29 @@ chmod +x dt2save.sh
 ```
 ## Options
 -u
-<br>upload save data from Android to PC
+<br>
+Upload save data from Android to PC.
 
 -d
 <br>
-download save data from PC to Android
+Download save data from PC to Android.
 
 -b DIRECTORY
 <br>
-backup Android save data to the specified directory
+Backup Android save data to the specified directory.
 
 -B DIRECTORY
 <br>
-backup PC save data to the specified directory
+Backup PC save data to the specified directory.
 
 -r FILE
 <br>
-restore the specified backup file to Android
+Restore the specified backup file to Android.
 
 -R FILE
 <br>
-restore the specified backup file to PC
+Restore the specified backup file to PC.
 
 -h: help.
 <br>
-display help and exit
+Display help and exit.
