@@ -3,12 +3,11 @@ Linux bash script that allows save data transfer between Android and PC for the 
 
 ## Requirements
 First, download [Android Backup Processor](https://sourceforge.net/projects/android-backup-processor/) and extract it.
-<br>
+<br><br>
 Then, install ADB. 
 ```console
 sudo apt install adb
 ```
-<br>
 Finally, enable USB debugging on Android.
 
 ## Execute script
@@ -18,22 +17,28 @@ chmod +x dt2save.sh
 ```
 ## Options
 -u
-    upload save data from Android to PC
+<br>upload save data from Android to PC
 
 -d
-    download save data from PC to Android
+<br>
+download save data from PC to Android
 
 -b DIRECTORY
-    backup Android save data to the specified directory
+<br>
+backup Android save data to the specified directory
 
 -B DIRECTORY
-    backup PC save data to the specified directory
+<br>
+backup PC save data to the specified directory
 
 -r FILE
-    restore the specified backup file to Android
+<br>
+restore the specified backup file to Android
 
 -R FILE
-    restore the specified backup file to PC
+<br>
+restore the specified backup file to PC
 
 -h: help.
-    display help and exit
+<br>
+display help and exit
