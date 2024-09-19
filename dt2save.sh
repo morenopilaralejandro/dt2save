@@ -47,7 +47,8 @@ checkArgs() {
     local OPTIND;
     #if argument number != 1 then show usage
     if [ $# -eq 0 ]; then
-       usage;
+        usage;
+        exit;
     fi
 }
 
@@ -74,34 +75,38 @@ checkGamePrefix() {
     fi
 }
 
+findPathAbpJar() {
+    echo "---Searching abp.jar";
+    pathAbpJar=$(find /home/$USER -name "abp.jar" 2> /dev/null | head -n1);
+}
+
+isValidPathAbpJar() {
+    if [ ! -z "$pathAbpJar" ] && [ -e $pathAbpJar ]; then
+        return;
+    fi
+    false;
+}
+
 setPathAbpJar() {
     #check aux txt file
     if [ -e ${pathRoaming}aux/pathAbpJar.txt ]; then
         pathAbpJar=$(cat ${pathRoaming}aux/pathAbpJar.txt);
+        if ! isValidPathAbpJar; then
+            findPathAbpJar;
+        fi        
     else
-        echo "---Looking for abp.jar";
-        pathAbpJar=$(find /home/$USER -name "abp.jar" 2> /dev/null | head -n1);
-        echo $pathAbpJar > ${pathRoaming}aux/pathAbpJar.txt;
-    fi
-}
-
-setPathUserBackup() {
-    #check aux txt file
-    if [ -e ${pathRoaming}aux/pathUserBackup.txt ]; then
-        pathUserBackup=$(cat ${pathRoaming}aux/pathUserBackup.txt);
-    else
-        pathUserBackup="/home/$USER/Documents/";
+        findPathAbpJar;
     fi
 }
 
 checkPathAbpJar() {
     #if path is not empty and file exists
-    if [ ! -z "$pathAbpJar" ] && [ -e $pathAbpJar ]; then
+    if isValidPathAbpJar; then
         echo "---Found abp.jar: ${pathAbpJar}";
-    else
+        echo $pathAbpJar > ${pathRoaming}aux/pathAbpJar.txt;
+    else    
         errorEcho "---Error: file abp.jar not found. Make sure abp.jar is under /home/${USER}";
         rm -rf ${pathRoaming}aux/pathAbpJar.txt;
-        exit;
     fi
 }
 
