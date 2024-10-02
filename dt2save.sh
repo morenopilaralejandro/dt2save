@@ -107,6 +107,7 @@ checkPathAbpJar() {
     else    
         errorEcho "---Error: file abp.jar not found. Make sure abp.jar is under /home/${USER}";
         rm -rf ${pathRoaming}aux/pathAbpJar.txt;
+        exit;
     fi
 }
 
